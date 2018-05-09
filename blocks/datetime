@@ -1,18 +1,21 @@
 #!/bin/bash
 
 FORMAT='%Y-%m-%d %A %H:%M'
+FORMAT2='%H:%M'
 INSTANCE="${BLOCK_INSTANCE}"
 #command=date '+%Y-%m-%d %A %H:%M'
 COLOR=''
 if [[ "${BLOCK_BUTTON}" -eq 1 ]] || [[ "${BLOCK_BUTTON}" -eq 2 ]] || [[ "${BLOCK_BUTTON}" -eq 3 ]]
 then
     DATETIME=$(TZ="${INSTANCE}" date "+${FORMAT}" )
+    DATETIME2=$(TZ="${INSTANCE}" date "+${FORMAT2}" )
     COLOR='#00aa00'
 else
     DATETIME=$(date "+${FORMAT}")
+    DATETIME2=$(date "+${FORMAT2}")
     COLOR=''
 fi
 
 echo "${DATETIME}"
-echo "${DATETIME}"
+echo "${DATETIME2}"
 echo "${COLOR}"

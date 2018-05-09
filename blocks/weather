@@ -7,17 +7,25 @@ ICON_STORM=""
 ICON_SNOW=""
 ICON_FOG=""
 
-SYMBOL_CELSIUS="℃"
+SYMBOL_CELSIUS="C"
 
 WEATHER_URL="https://weather.gc.ca/city/pages/sk-40_metric_e.html"
 FULL_MESSAGE=""
 
 WEATHER_INFO=$(wget -qO- "${WEATHER_URL}")
-WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -o -P '(?<=wxo-metric-hide">).*(?=&deg;)' | head -n 1)
+#WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -o -P '(?<=wxo-metric-hide">).*(?=&deg;)' | head -n 1)
+WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -o -P '(?<=wxo-metric-hide">).*(?=<abbr title="Celsius">)' | head -n 1)
 WEATHER_MAIN=$(echo "${WEATHER_INFO}" |  grep -o -P '(?<=<dd class="mrgn-bttm-0">).*(?=</dd>)' | sed -n 3p)
 
+if [ ${#WEATHER_TEMP} -ge 5 ] || [ ${#WEATHER_MAIN} -ge 20 ] ; then
+    echo "Weather parse error"
+    echo "WPE"
+    echo "#FF0000"
+    exit
+fi
+
 if [[ "${BLOCK_BUTTON}" -eq 1 ]] || [[ "${BLOCK_BUTTON}" -eq 2 ]] || [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
-    FULL_MESSAGE=${WEATHER_MAIN}" "
+    FULL_MESSAGE=" "${WEATHER_MAIN}" "
 fi
 
 

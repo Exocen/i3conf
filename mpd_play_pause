@@ -1,0 +1,8 @@
+#!/bin/bash
+a=$(mpc | sed -n 2p | awk '{print $1}')
+
+if [ $a = "[playing]" ]; then
+    mpc pause
+else
+    mpc play
+fi

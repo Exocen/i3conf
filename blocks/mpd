@@ -1,0 +1,32 @@
+#!/bin/bash
+
+mpc 2>/dev/null 1>/dev/null
+if [ $? -ne 0 ]; then
+    exit 0
+fi
+
+STOP=$(mpc | head -n 1 | awk '{print $1}')
+if [ $STOP == "volume:" ] || [ $STOP == 'Updating' ] ; then
+    exit 0
+fi
+
+STATUS=$(mpc | sed -n 2p | awk '{print $1}')
+if [ $STATUS == "[playing]" ] ; then
+    STATUS2=""
+else
+    STATUS2=" "$STATUS
+fi
+TITLE=$(mpc | head -n 1)
+PERCENT=$(mpc | sed -n 2p | awk '{print $4}')
+
+echo "${TITLE} ${PERCENT}${STATUS2}"
+echo "${STATUS}"
+echo ""
+
+if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+    ~/.i3/mpd_play_pause
+elif [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
+    mpc prev
+elif [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
+    mpc next
+fi

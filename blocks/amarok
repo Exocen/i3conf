@@ -1,0 +1,24 @@
+#!/bin/bash
+IS_AMAROK_RUNNING=$(pidof amarok)
+if [ -z "$IS_AMAROK_RUNNING" ]; then
+    exit 0
+fi
+
+TRACK_MIN=$(qdbus org.kde.amarok /Player org.freedesktop.MediaPlayer.GetMetadata | sort -r | egrep "^(title:|artist:)" | sed -e "s/^.*: //g" | sed -e ':a;N;$!ba;s/\n/ - /g' | head -c 10)
+
+TRACK_MAX=$(qdbus org.kde.amarok /Player org.freedesktop.MediaPlayer.GetMetadata | sort -r | egrep "^(title:|artist:)" | sed -e "s/^.*: //g" | sed -e ':a;N;$!ba;s/\n/ - /g')
+
+STATUS=$(qdbus --literal org.kde.amarok /Player org.freedesktop.MediaPlayer.GetStatus | sed -e "s/,//g" | awk  '{print $3}')
+
+POSITION=$(qdbus org.kde.amarok /Player org.freedesktop.MediaPlayer.PositionGet)
+TOTAL_TIME=$(qdbus org.kde.amarok /Player org.freedesktop.MediaPlayer.GetMetadata | sort -r | egrep "mtime" | awk '{print $2}')
+
+TIME=' ('$(expr $(expr $POSITION \* 100) / $TOTAL_TIME)'%)'
+
+if [ $STATUS == 1 ] ; then
+    PAUSE=" [Paused]"
+fi
+
+echo "${TRACK_MAX}${TIME}${PAUSE}"
+echo "${TRACK_MIN}"
+echo ""
