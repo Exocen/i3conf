@@ -26,9 +26,11 @@ if [ ${#WEATHER_TEMP} -ge 5 ] || [ ${#WEATHER_MAIN} -ge 60 ] ; then
     exit
 fi
 
-if [[ "${BLOCK_BUTTON}" -eq 1 ]] || [[ "${BLOCK_BUTTON}" -eq 2 ]] || [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
+if [[ "${BLOCK_BUTTON}" -eq 1 ]] || [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
     FULL_MESSAGE=" "${WEATHER_MAIN}" "
     SHORT_MESSAGE=" "${WEATHER_MAIN_SHORT}" "
+elif [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
+    xdg-open $WEATHER_URL
 fi
 
 
