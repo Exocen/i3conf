@@ -9,27 +9,22 @@
 #
 # Please see http://i3wm.org/doc0s/userguide.html for a complete reference!
 #exec xrandr --output HDMI-0 --mode 1024x768 --output DVI-I-0 --mode 2048x1152 --rate 59.91 --left-of HDMI-0
-# solido config
-exec --no-startup-id xrandr --output HDMI-0 --primary --left-of VGA-0
-workspace "1 IDE" output HDMI-0
-workspace 2 output VGA-0
-workspace "8 Chat" output VGA-0
-workspace "9 Music" output VGA-0
+exec --no-startup-id setxkbmap -layout fr
 
 # background
-assign [class="(?i)slack"] 8 Chat
-assign [class="(?i)blueman-manager"] 9 Music
-assign [class="(?i)pycharm"] 1 IDE
-assign [class="(?i)clementine"] 9 Music
-
+#assign [class="(?i)slack"] 8 Chat
+#assign [class="(?i)blueman-manager"] 9 Music
+#assign [class="(?i)pycharm"] 1 IDE
+#assign [class="(?i)clementine"] 9 Music
+#
 exec --no-startup-id nitrogen --restore
 #exec --no-startup-id blueman-applet
 
 #exec --no-startup-id blueman-applet
 # exec --no-startup-id pactl load-module module-bluetooth-discover #bluetooth discover
-exec --no-startup-id slack #network-manager-applet
+#exec --no-startup-id slack #network-manager-applet
 # numlock
-exec numlockx on
+exec --no-startup-id numlockx on
 #exec gnome-settings-daemon
 
 bindsym $mod+g exec firefox
@@ -101,8 +96,7 @@ bindsym $mod+n exec nautilus --no-desktop
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator  #i3-sensible-terminal
-
+bindsym $mod+Return exec terminator
 # kill focused window
 bindsym $mod+Shift+A kill
 
@@ -174,26 +168,26 @@ bindsym $mod+q focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1 IDE
+bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8 Chat
-bindsym $mod+9 workspace 9 Music
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1 IDE
+bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8 Chat
-bindsym $mod+Shift+9 move container to workspace 9 Music
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
 
 # move next or previous
 bindsym $mod+ctrl+Left workspace prev
@@ -235,6 +229,6 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-font pango:DejaVu Sans Mono, FontAwesome 10
+font pango:DejaVu Sans Mono, Icons 10
 status_command i3blocks -c ~/.i3/i3blocks.conf #i3status
 }
