@@ -14,8 +14,8 @@
 # background
 #assign [class="(?i)slack"] 8 Chat
 #assign [class="(?i)blueman-manager"] 9 Music
-#assign [class="(?i)pycharm"] 1 IDE
-#assign [class="(?i)clementine"] 9 Music
+assign [class="(?i)steam"] 8
+assign [class="(?i)clementine"] 9
 #
 exec --no-startup-id nitrogen --restore
 #exec --no-startup-id blueman-applet

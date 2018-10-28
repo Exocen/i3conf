@@ -34,9 +34,11 @@ date_now=$(date +%F)
 if [ -f $FILE ]; then
     date_file=$( tail -n 1 $FILE )
     if [ $date_file = $date_now ]; then
-        NEEDTOCONNECT=false
         sunrise=$(tail -n 3 $FILE | head -1)
         sunset=$(tail -n 2 $FILE | head -1)
+	if [ ! -z "$sunrise" ]; then
+		NEEDTOCONNECT=false
+	fi
     fi
 fi
 
