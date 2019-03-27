@@ -19,16 +19,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #assign [class="(?i)blueman-manager"] 9 Music
 assign [class="(?i)steam"] 8
 assign [class="(?i)clementine"] 9
-#
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id bluetoothctl power on
 
-#exec --no-startup-id blueman-applet
-# exec --no-startup-id pactl load-module module-bluetooth-discover #bluetooth discover
-#exec --no-startup-id slack #network-manager-applet
 # numlock
 exec --no-startup-id numlockx on
-#exec gnome-settings-daemon
 
 bindsym $mod+g exec firefox
 bindsym $mod+p exec firefox -private-window
@@ -81,7 +75,6 @@ focus_follows_mouse no
 
 # Lock
 #bindsym $mod+l exec i3lock -i ~/Pictures/Wall.png
-bindsym $mod+l exec ~/.i3/i3lock-color/lock.sh
 # Suspend
 
 #bindsym $mod+Shift+s exec ~/.i3/suspend
@@ -113,8 +106,8 @@ bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ unmute && pkil
 
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightnes
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightnes
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
