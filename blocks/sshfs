@@ -1,8 +1,0 @@
-#!/bin/bash
-
-DIR="${BLOCK_INSTANCE}"
-
-if [ "$(ls -A $DIR)" ]; then
-    echo ""
-    echo ""
-fi
