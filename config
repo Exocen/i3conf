@@ -12,6 +12,8 @@
 #exec --no-startup-id setxkbmap -layout fr
 # Unclutter (hidden pointer)
 exec --no-startup-id unclutter
+# Wifi
+exec --no-startup-id sudo netctl start wlp1s0-WIFI &
 
 # Polybar start
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -90,7 +92,7 @@ bindsym $mod+n exec nautilus --no-desktop
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec termite
 # kill focused window
 bindsym $mod+Shift+A kill
 
