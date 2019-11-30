@@ -32,11 +32,11 @@ bindsym $mod+g exec firefox
 bindsym $mod+p exec firefox -private-window
 
 # mpd control
-# bindsym $mod+F1 exec ~/.i3/mpd_play_pause
-# bindsym $mod+F2 exec mpc prev
-# bindsym $mod+F3 exec mpc next
-# bindsym $mod+F4 exec mpc stop
-# bindsym $mod+F5 exec mpc volume -1 && notify-send -t 400 -u low Volume "$(mpc | tail -n1 | awk -F ': |:| ' '{print $2}')"
+bindsym $mod+F1 exec mpc toggle
+bindsym $mod+F2 exec mpc prev
+bindsym $mod+F3 exec mpc next
+bindsym $mod+F4 exec mpc stop
+# bindsym $mod+F5 exec mpc volume -1
 # bindsym $mod+F6 exec mpc volume +1 && notify-send -t 400 -u low Volume "$(mpc | tail -n1 | awk -F ': |:| ' '{print $2}')"
 # bindsym $mod+F7 exec mpc volume -5 && notify-send -t 400 -u low Volume "$(mpc | tail -n1 | awk -F ': |:| ' '{print $2}')"
 # bindsym $mod+F8 exec mpc volume +5 && notify-send -t 400 -u low Volume "$(mpc | tail -n1 | awk -F ': |:| ' '{print $2}')"
@@ -52,10 +52,10 @@ bindsym $mod+p exec firefox -private-window
 # bindsym $mod+F8 exec qdbus org.kde.amarok /Player org.kde.amarok.Mpris1Extensions.Player.VolumeUp 5
 
 # Clementine controls
-bindsym $mod+F1 exec qdbus org.mpris.MediaPlayer2.clementine /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym $mod+F2 exec qdbus org.mpris.MediaPlayer2.clementine /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-bindsym $mod+F3 exec qdbus org.mpris.MediaPlayer2.clementine /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym $mod+F4 exec qdbus org.mpris.MediaPlayer2.clementine /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
+# bindsym $mod+F1 exec qdbus org.mpris.MediaPlayer2.clementine /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+# bindsym $mod+F2 exec qdbus org.mpris.MediaPlayer2.clementine /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+# bindsym $mod+F3 exec qdbus org.mpris.MediaPlayer2.clementine /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+# bindsym $mod+F4 exec qdbus org.mpris.MediaPlayer2.clementine /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
 
 set $mod Mod4
 
